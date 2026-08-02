@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CineFlix</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#000;
+color:white;
+overflow-x:hidden;
+}
+
+header{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
+url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1600&q=80");
+background-size:cover;
+background-position:center;
+text-align:center;
+}
+
+header h1{
+font-size:70px;
+color:red;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+
+from{
+text-shadow:0 0 10px red;
+}
+
+to{
+text-shadow:0 0 40px red;
+}
+
+}
+
+header p{
+
+font-size:25px;
+margin:20px;
+
+}
+
+button{
+
+padding:15px 35px;
+font-size:20px;
+border:none;
+border-radius:30px;
+background:red;
+color:white;
+cursor:pointer;
+transition:.4s;
+
+}
+
+button:hover{
+
+transform:scale(1.1);
+
+}
+
+.movies{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+padding:50px;
+
+}
+
+.card{
+
+background:#111;
+border-radius:15px;
+overflow:hidden;
+transition:.5s;
+box-shadow:0 0 15px rgba(255,255,255,.2);
+
+}
+
+.card:hover{
+
+transform:translateY(-15px) scale(1.05);
+
+}
+
+.card img{
+
+width:100%;
+height:350px;
+object-fit:cover;
+
+}
+
+.card h2{
+
+padding:15px;
+text-align:center;
+
+}
+
+footer{
+
+padding:30px;
+text-align:center;
+background:#111;
+margin-top:30px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>🎬 CineFlix</h1>
+
+<p>Unlimited Movies | Unlimited Entertainment</p>
+
+<button onclick="scrollMovies()">
+
+Explore Movies
+
+</button>
+
+</header>
+
+<section class="movies" id="movies">
+
+<div class="card">
+
+<img src="https://picsum.photos/400/600?1">
+
+<h2>Action Movie</h2>
+
+</div>
+
+<div class="card">
+
+<img src="https://picsum.photos/400/600?2">
+
+<h2>Adventure Movie</h2>
+
+</div>
+
+<div class="card">
+
+<img src="https://picsum.photos/400/600?3">
+
+<h2>Sci-Fi Movie</h2>
+
+</div>
+
+<div class="card">
+
+<img src="https://picsum.photos/400/600?4">
+
+<h2>Romantic Movie</h2>
+
+</div>
+
+<div class="card">
+
+<img src="https://picsum.photos/400/600?5">
+
+<h2>Horror Movie</h2>
+
+</div>
+
+<div class="card">
+
+<img src="https://picsum.photos/400/600?6">
+
+<h2>Comedy Movie</h2>
+
+</div>
+
+</section>
+
+<footer>
+
+<h2>© 2026 CineFlix</h2>
+
+</footer>
+
+<script>
+
+function scrollMovies(){
+
+document.getElementById("movies").scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+}
+
+const cards=document.querySelectorAll(".card");
+
+window.addEventListener("scroll",()=>{
+
+cards.forEach(card=>{
+
+const top=card.getBoundingClientRect().top;
+
+if(top<window.innerHeight-100){
+
+card.style.opacity="1";
+
+card.style.transform="translateY(0)";
+
+}
+
+});
+
+});
+
+cards.forEach(card=>{
+
+card.style.opacity="0";
+
+card.style.transform="translateY(100px)";
+
+card.style.transition="1s";
+
+});
+
+</script>
+
+</body>
+</html>
