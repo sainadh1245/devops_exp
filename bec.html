@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABC College of Engineering</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            color: #222;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 18px 7%;
+            background: rgba(10, 25, 55, 0.95);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #ffd43b;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffd43b;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            background:
+                linear-gradient(rgba(5,20,50,.75), rgba(5,20,50,.75)),
+                url("https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1600&q=80");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 100px 20px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeUp 1.5s ease;
+        }
+
+        .hero h1 {
+            font-size: 55px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #ffd43b;
+        }
+
+        .hero p {
+            font-size: 20px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            background: #ffd43b;
+            color: #111;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,.3);
+        }
+
+        /* COMMON */
+        section {
+            padding: 90px 8%;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .title h2 {
+            font-size: 38px;
+            color: #0a1937;
+            margin-bottom: 12px;
+        }
+
+        .title p {
+            color: #666;
+        }
+
+        /* ABOUT */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,.15);
+        }
+
+        .about-text h3 {
+            font-size: 32px;
+            color: #0a1937;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        /* COURSES */
+        .courses {
+            background: #eef2f8;
+        }
+
+        .course-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .course-card {
+            background: white;
+            padding: 35px 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: .4s;
+            box-shadow: 0 8px 25px rgba(0,0,0,.08);
+        }
+
+        .course-card:hover {
+            transform: translateY(-12px);
+        }
+
+        .course-icon {
+            font-size: 45px;
+            margin-bottom: 20px;
+        }
+
+        .course-card h3 {
+            color: #0a1937;
+            margin-bottom: 12px;
+        }
+
+        .course-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* STATS */
+        .stats {
+            background: #0a1937;
+            color: white;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            text-align: center;
+            gap: 20px;
+        }
+
+        .stat h2 {
+            font-size: 45px;
+            color: #ffd43b;
+        }
+
+        .stat p {
+            margin-top: 8px;
+        }
+
+        /* NOTICE */
+        .notice-container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .notice {
+            background: white;
+            margin-bottom: 15px;
+            padding: 20px;
+            border-left: 5px solid #ffd43b;
+            box-shadow: 0 5px 15px rgba(0,0,0,.07);
+            border-radius: 8px;
+        }
+
+        .notice strong {
+            color: #0a1937;
+        }
+
+        /* CONTACT */
+        .contact {
+            background: #eef2f8;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-info {
+            background: #0a1937;
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+        }
+
+        .contact-info h3 {
+            font-size: 28px;
+            margin-bottom: 25px;
+        }
+
+        .contact-info p {
+            margin: 20px 0;
+        }
+
+        form {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,.08);
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        textarea {
+            height: 130px;
+            resize: none;
+        }
+
+        button {
+            border: none;
+            cursor: pointer;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #050d20;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        /* ANIMATION */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* MOBILE */
+        @media(max-width: 800px) {
+
+            nav {
+                padding: 15px 5%;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .about,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .course-container {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            section {
+                padding: 60px 5%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav>
+        <div class="logo">ABC<span> College</span></div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#notices">Notices</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h1>Welcome to <span>ABC College</span></h1>
+
+            <p>
+                Empowering students with knowledge, innovation
+                and skills for a successful future.
+            </p>
+
+            <a href="#courses" class="btn">
+                Explore Courses
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+        <div class="title">
+            <h2>About Our College</h2>
+            <p>Building tomorrow's leaders today</p>
+        </div>
+
+        <div class="about">
+
+            <img src="https://images.unsplash.com/photo-1564981797816-1043664bf78d?auto=format&fit=crop&w=1000&q=80">
+
+            <div class="about-text">
+
+                <h3>Excellence in Education</h3>
+
+                <p>
+                    ABC College of Engineering is committed to
+                    providing quality education and creating a
+                    professional learning environment for students.
+                </p>
+
+                <p>
+                    Our experienced faculty, modern laboratories
+                    and industry-oriented curriculum help students
+                    develop technical and professional skills.
+                </p>
+
+                <a href="#contact" class="btn">Know More</a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- COURSES -->
+
+    <section class="courses" id="courses">
+
+        <div class="title">
+
+            <h2>Our Courses</h2>
+
+            <p>
+                Choose the right path for your career
+            </p>
+
+        </div>
+
+
+        <div class="course-container">
+
+            <div class="course-card">
+
+                <div class="course-icon">💻</div>
+
+                <h3>Computer Science</h3>
+
+                <p>
+                    Learn programming, software development,
+                    AI, data science and modern technologies.
+                </p>
+
+            </div>
+
+
+            <div class="course-card">
+
+                <div class="course-icon">🔐</div>
+
+                <h3>Cyber Security</h3>
+
+                <p>
+                    Learn ethical hacking, network security,
+                    digital forensics and cyber defense.
+                </p>
+
+            </div>
+
+
+            <div class="course-card">
+
+                <div class="course-icon">🤖</div>
+
+                <h3>Artificial Intelligence</h3>
+
+                <p>
+                    Explore machine learning, deep learning,
+                    generative AI and intelligent systems.
+                </p>
+
+            </div>
+
+
+            <div class="course-card">
+
+                <div class="course-icon">⚙️</div>
+
+                <h3>Mechanical Engineering</h3>
+
+                <p>
+                    Develop skills in manufacturing,
+                    design and mechanical systems.
+                </p>
+
+            </div>
+
+
+            <div class="course-card">
+
+                <div class="course-icon">🏗️</div>
+
+                <h3>Civil Engineering</h3>
+
+                <p>
+                    Learn construction, structural engineering,
+                    architecture and infrastructure.
+                </p>
+
+            </div>
+
+
+            <div class="course-card">
+
+                <div class="course-icon">📡</div>
+
+                <h3>Electronics</h3>
+
+                <p>
+                    Explore electronics, communication,
+                    embedded systems and IoT.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- STATS -->
+
+    <section class="stats">
+
+        <div class="stat">
+
+            <h2>25+</h2>
+
+            <p>Years of Excellence</p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <h2>5000+</h2>
+
+            <p>Students</p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <h2>250+</h2>
+
+            <p>Faculty</p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <h2>95%</h2>
+
+            <p>Placement Rate</p>
+
+        </div>
+
+    </section>
+
+
+    <!-- NOTICES -->
+
+    <section id="notices">
+
+        <div class="title">
+
+            <h2>Latest Notices</h2>
+
+            <p>Important announcements</p>
+
+        </div>
+
+
+        <div class="notice-container">
+
+            <div class="notice">
+
+                📢 <strong>Admissions Open</strong>
+
+                <p>
+                    Applications are now open for the
+                    2026-27 academic year.
+                </p>
+
+            </div>
+
+
+            <div class="notice">
+
+                📅 <strong>Semester Examinations</strong>
+
+                <p>
+                    Semester examination timetable will
+                    be released shortly.
+                </p>
+
+            </div>
+
+
+            <div class="notice">
+
+                🏆 <strong>Campus Placements</strong>
+
+                <p>
+                    Placement drive will be conducted
+                    next month.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section class="contact" id="contact">
+
+        <div class="title">
+
+            <h2>Contact Us</h2>
+
+            <p>We are here to help you</p>
+
+        </div>
+
+
+        <div class="contact-container">
+
+            <div class="contact-info">
+
+                <h3>ABC College</h3>
+
+                <p>📍 College Road, Andhra Pradesh</p>
+
+                <p>📞 +91 98765 43210</p>
+
+                <p>✉️ info@abccollege.edu</p>
+
+                <p>🕐 Monday - Saturday: 9:00 AM - 5:00 PM</p>
+
+            </div>
+
+
+            <form onsubmit="sendMessage(event)">
+
+                <input
+                    type="text"
+                    placeholder="Your Name"
+                    required
+                >
+
+                <input
+                    type="email"
+                    placeholder="Your Email"
+                    required
+                >
+
+                <input
+                    type="text"
+                    placeholder="Subject"
+                    required
+                >
+
+                <textarea
+                    placeholder="Your Message"
+                    required
+                ></textarea>
+
+                <button class="btn" type="submit">
+                    Send Message
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 ABC College of Engineering.
+            All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        function sendMessage(event) {
+
+            event.preventDefault();
+
+            alert(
+                "Thank you! Your message has been submitted."
+            );
+
+        }
+
+    </script>
+
+</body>
+</html>
