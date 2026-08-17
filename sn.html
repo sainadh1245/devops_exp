@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>Sainadh | Cyber Security Portfolio</title>
 
 <style>
+
+/* =====================================================
+   GLOBAL
+===================================================== */
+
 *{
     margin:0;
     padding:0;
@@ -15,232 +26,436 @@
 }
 
 :root{
+
     --bg:#05070d;
+    --bg2:#080c14;
     --card:#0b101b;
+    --card2:#0e1522;
+
     --line:#182337;
+
     --text:#e8edf7;
     --muted:#8290a8;
+
     --accent:#00ff9d;
     --accent2:#00b8ff;
+
     --danger:#ff315c;
+    --warning:#f5c542;
 }
 
 body{
+
     background:var(--bg);
+
     color:var(--text);
-    font-family:Consolas, "Courier New", monospace;
+
+    font-family:
+        Consolas,
+        "Courier New",
+        monospace;
+
     overflow-x:hidden;
 }
 
-/* MATRIX BACKGROUND */
+
+/* =====================================================
+   MATRIX
+===================================================== */
 
 #matrix{
+
     position:fixed;
+
     inset:0;
-    z-index:-2;
-    opacity:.13;
+
+    width:100%;
+    height:100%;
+
+    z-index:-10;
+
+    opacity:.12;
+
+    pointer-events:none;
 }
 
-/* NAVBAR */
+
+/* =====================================================
+   NAVBAR
+===================================================== */
 
 nav{
+
     position:fixed;
+
     top:0;
     left:0;
+
     width:100%;
+
     height:70px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
     padding:0 7%;
-    background:rgba(5,7,13,.75);
+
+    background:
+        rgba(5,7,13,.82);
+
     backdrop-filter:blur(15px);
-    border-bottom:1px solid var(--line);
+
+    border-bottom:
+        1px solid var(--line);
+
     z-index:1000;
 }
 
 .logo{
+
     color:var(--accent);
+
     font-size:22px;
+
     font-weight:bold;
+
+    letter-spacing:1px;
 }
 
 .logo span{
+
     color:white;
 }
 
 nav ul{
+
     display:flex;
+
     gap:28px;
+
     list-style:none;
 }
 
 nav a{
+
     color:#9aa8bd;
+
     text-decoration:none;
-    font-size:14px;
+
+    font-size:13px;
+
     transition:.3s;
 }
 
 nav a:hover{
+
     color:var(--accent);
+
+    text-shadow:
+        0 0 12px
+        rgba(0,255,157,.5);
 }
 
-/* HERO */
+
+/* =====================================================
+   HERO
+===================================================== */
 
 .hero{
+
     min-height:100vh;
+
     display:flex;
+
     align-items:center;
-    padding:100px 9% 60px;
+
+    padding:
+        110px
+        9%
+        60px;
+
     position:relative;
 }
 
 .hero-content{
-    max-width:850px;
+
+    max-width:900px;
 }
 
 .status{
+
     display:inline-flex;
+
     align-items:center;
+
     gap:10px;
+
     padding:8px 14px;
-    border:1px solid #1b3d34;
+
+    border:
+        1px solid #1b3d34;
+
     background:#07120f;
+
     color:var(--accent);
+
     border-radius:20px;
-    font-size:12px;
+
+    font-size:11px;
+
     margin-bottom:25px;
 }
 
 .status-dot{
+
     width:8px;
     height:8px;
+
     background:var(--accent);
+
     border-radius:50%;
-    box-shadow:0 0 15px var(--accent);
+
+    box-shadow:
+        0 0 15px
+        var(--accent);
+
+    animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+
+    50%{
+        opacity:.4;
+        transform:scale(.7);
+    }
 }
 
 .hero h1{
-    font-size:clamp(45px,8vw,90px);
+
+    font-size:
+        clamp(45px,8vw,90px);
+
     line-height:.95;
+
     margin-bottom:25px;
 }
 
 .hero h1 span{
+
     color:var(--accent);
-    text-shadow:0 0 30px rgba(0,255,157,.35);
+
+    text-shadow:
+        0 0 30px
+        rgba(0,255,157,.35);
 }
 
 .typing{
+
     color:var(--accent2);
-    font-size:clamp(18px,3vw,28px);
+
+    font-size:
+        clamp(18px,3vw,28px);
+
     margin-bottom:25px;
+
+    min-height:35px;
 }
 
 .cursor{
+
     animation:blink .7s infinite;
 }
 
 @keyframes blink{
-    50%{opacity:0}
+
+    50%{
+        opacity:0;
+    }
 }
 
 .hero p{
-    max-width:700px;
+
+    max-width:720px;
+
     color:var(--muted);
+
     font-family:Arial,sans-serif;
+
     line-height:1.8;
+
     font-size:16px;
 }
 
 .buttons{
+
     display:flex;
+
     gap:15px;
+
     margin-top:35px;
+
     flex-wrap:wrap;
 }
 
 .btn{
+
     padding:14px 23px;
-    border:1px solid var(--accent);
+
+    border:
+        1px solid var(--accent);
+
     color:var(--accent);
+
     text-decoration:none;
+
     transition:.3s;
-    font-size:13px;
+
+    font-size:12px;
+
     position:relative;
+
     overflow:hidden;
+
+    display:inline-block;
 }
 
 .btn:hover{
+
     background:var(--accent);
+
     color:#000;
-    box-shadow:0 0 30px rgba(0,255,157,.25);
+
+    box-shadow:
+        0 0 30px
+        rgba(0,255,157,.25);
+
+    transform:translateY(-2px);
 }
 
 .btn.secondary{
+
     border-color:#31415b;
+
     color:#b5c0d1;
 }
 
 .btn.secondary:hover{
+
     background:#111a2a;
+
     color:white;
 }
 
-/* SECTIONS */
+
+/* =====================================================
+   SECTIONS
+===================================================== */
 
 section{
-    padding:100px 9%;
+
+    padding:
+        100px
+        9%;
 }
 
 .section-label{
+
     color:var(--accent);
+
     font-size:13px;
+
     margin-bottom:12px;
+
+    letter-spacing:1px;
 }
 
 .section-title{
+
     font-size:40px;
+
     margin-bottom:50px;
 }
 
-/* ABOUT */
+
+/* =====================================================
+   ABOUT
+===================================================== */
 
 .about-grid{
+
     display:grid;
-    grid-template-columns:1fr 1fr;
+
+    grid-template-columns:
+        1fr 1fr;
+
     gap:50px;
 }
 
 .terminal{
+
     background:#070b13;
-    border:1px solid var(--line);
+
+    border:
+        1px solid var(--line);
+
     border-radius:10px;
+
     overflow:hidden;
-    box-shadow:0 20px 60px rgba(0,0,0,.35);
+
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,.35);
 }
 
 .terminal-top{
+
     height:38px;
+
     background:#0d1421;
+
     display:flex;
+
     align-items:center;
+
     gap:7px;
+
     padding:0 14px;
 }
 
 .terminal-top i{
+
     width:10px;
     height:10px;
+
     border-radius:50%;
+
     background:#4a566b;
 }
 
+.terminal-top i:nth-child(1){
+    background:#ff5f57;
+}
+
+.terminal-top i:nth-child(2){
+    background:#febc2e;
+}
+
+.terminal-top i:nth-child(3){
+    background:#28c840;
+}
+
 .terminal-body{
+
     padding:25px;
+
     line-height:2;
+
     font-size:14px;
+
+    overflow-x:auto;
 }
 
 .green{
@@ -256,653 +471,1608 @@ section{
 }
 
 .about-text{
+
     color:var(--muted);
+
     line-height:1.9;
+
     font-family:Arial,sans-serif;
 }
 
 .about-text p{
+
     margin-bottom:20px;
 }
 
-/* SKILLS */
+
+/* =====================================================
+   SKILLS
+===================================================== */
 
 .skills{
+
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+        repeat(4,1fr);
+
     gap:15px;
 }
 
 .skill{
+
     padding:25px;
-    border:1px solid var(--line);
-    background:linear-gradient(145deg,#0b101b,#070a11);
+
+    border:
+        1px solid var(--line);
+
+    background:
+        linear-gradient(
+            145deg,
+            #0b101b,
+            #070a11
+        );
+
     transition:.3s;
 }
 
 .skill:hover{
-    transform:translateY(-7px);
-    border-color:var(--accent);
-    box-shadow:0 15px 40px rgba(0,255,157,.08);
+
+    transform:
+        translateY(-7px);
+
+    border-color:
+        var(--accent);
+
+    box-shadow:
+        0 15px 40px
+        rgba(0,255,157,.08);
 }
 
 .skill-icon{
+
     font-size:28px;
+
     margin-bottom:15px;
 }
 
 .skill h3{
+
     font-size:16px;
+
     margin-bottom:8px;
 }
 
 .skill p{
+
     color:var(--muted);
+
     font-size:12px;
+
     line-height:1.6;
 }
 
-/* PROJECTS */
+
+/* =====================================================
+   PROJECTS
+===================================================== */
 
 .projects{
+
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     gap:20px;
 }
 
 .project{
-    border:1px solid var(--line);
+
+    border:
+        1px solid var(--line);
+
     background:#090e17;
+
     padding:28px;
+
     position:relative;
+
     transition:.4s;
+
     overflow:hidden;
 }
 
 .project::before{
+
     content:"";
+
     position:absolute;
-    width:100px;
-    height:100px;
-    background:var(--accent);
+
+    width:120px;
+    height:120px;
+
+    right:-50px;
+    top:-50px;
+
+    background:
+        var(--accent);
+
     filter:blur(70px);
+
     opacity:0;
+
     transition:.4s;
 }
 
 .project:hover{
-    transform:translateY(-10px);
+
+    transform:
+        translateY(-10px);
+
     border-color:#274b43;
 }
 
 .project:hover::before{
+
     opacity:.12;
 }
 
 .project-number{
+
     color:#34435a;
+
     font-size:13px;
 }
 
 .project h3{
+
     margin:20px 0 12px;
+
     font-size:20px;
 }
 
 .project p{
+
     color:var(--muted);
+
     line-height:1.7;
+
     font-family:Arial,sans-serif;
+
     font-size:14px;
 }
 
 .tags{
+
     display:flex;
+
     gap:7px;
+
     flex-wrap:wrap;
+
     margin-top:20px;
 }
 
 .tag{
+
     font-size:10px;
+
     padding:6px 9px;
+
     background:#0e1826;
+
     color:var(--accent2);
-    border:1px solid #182b40;
+
+    border:
+        1px solid #182b40;
 }
 
-/* TERMINAL SCANNER */
+.project-link{
 
-.scanner{
-    border:1px solid var(--line);
-    background:#05080e;
-    padding:30px;
     margin-top:20px;
 }
 
+
+/* =====================================================
+   SECURITY SCANNER
+===================================================== */
+
+.scanner{
+
+    border:
+        1px solid var(--line);
+
+    background:#05080e;
+
+    padding:30px;
+
+    margin-top:25px;
+}
+
 .scan-header{
+
     display:flex;
+
     justify-content:space-between;
+
     color:var(--muted);
+
     font-size:12px;
+
     margin-bottom:20px;
 }
 
 .progress{
+
     width:100%;
+
     height:5px;
+
     background:#111827;
+
     overflow:hidden;
 }
 
 .progress-bar{
+
     height:100%;
+
     width:0;
+
     background:var(--accent);
-    box-shadow:0 0 15px var(--accent);
+
+    box-shadow:
+        0 0 15px
+        var(--accent);
+
     transition:2s;
 }
 
 .scan-result{
+
     margin-top:20px;
+
     min-height:30px;
+
     color:var(--accent);
+
     font-size:13px;
 }
 
 .scan-btn{
+
     margin-top:20px;
+
     padding:10px 18px;
+
     background:transparent;
+
     color:var(--accent);
-    border:1px solid var(--accent);
+
+    border:
+        1px solid var(--accent);
+
     cursor:pointer;
+
     font-family:inherit;
+
+    transition:.3s;
 }
 
-/* TIMELINE */
+.scan-btn:hover{
+
+    background:var(--accent);
+
+    color:#000;
+}
+
+
+/* =====================================================
+   TIMELINE
+===================================================== */
 
 .timeline{
+
     max-width:800px;
-    border-left:1px solid #263247;
+
+    border-left:
+        1px solid #263247;
+
     margin-left:10px;
 }
 
 .timeline-item{
-    padding:0 0 45px 35px;
+
+    padding:
+        0 0 45px 35px;
+
     position:relative;
 }
 
 .timeline-item::before{
+
     content:"";
+
     position:absolute;
+
     left:-5px;
+
     top:4px;
+
     width:9px;
     height:9px;
+
     background:var(--accent);
-    box-shadow:0 0 15px var(--accent);
+
+    box-shadow:
+        0 0 15px
+        var(--accent);
+
     border-radius:50%;
 }
 
 .timeline-date{
+
     color:var(--accent);
+
     font-size:12px;
 }
 
 .timeline h3{
+
     margin:10px 0;
 }
 
 .timeline p{
+
     color:var(--muted);
+
     line-height:1.7;
+
     font-family:Arial,sans-serif;
 }
 
-/* CONTACT */
+
+/* =====================================================
+   ACHIEVEMENTS
+===================================================== */
+
+.achievements{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:20px;
+}
+
+.achievement{
+
+    padding:25px;
+
+    background:
+        var(--card);
+
+    border:
+        1px solid var(--line);
+
+    transition:.3s;
+}
+
+.achievement:hover{
+
+    border-color:
+        var(--accent2);
+
+    transform:
+        translateY(-5px);
+}
+
+.achievement-icon{
+
+    font-size:30px;
+
+    margin-bottom:15px;
+}
+
+.achievement h3{
+
+    margin-bottom:8px;
+}
+
+.achievement p{
+
+    color:var(--muted);
+
+    font-family:Arial,sans-serif;
+
+    line-height:1.6;
+
+    font-size:13px;
+}
+
+
+/* =====================================================
+   CONTACT
+===================================================== */
 
 .contact{
+
     text-align:center;
-    max-width:800px;
+
+    max-width:850px;
+
     margin:auto;
 }
 
 .contact p{
+
     color:var(--muted);
+
     line-height:1.8;
+
     font-family:Arial,sans-serif;
 }
 
 .contact-links{
+
     display:flex;
+
     justify-content:center;
+
     flex-wrap:wrap;
+
     gap:15px;
+
     margin-top:30px;
 }
 
 .contact-links a{
+
     color:#cbd5e1;
+
     text-decoration:none;
-    border:1px solid var(--line);
+
+    border:
+        1px solid var(--line);
+
     padding:13px 20px;
+
     transition:.3s;
 }
 
 .contact-links a:hover{
+
     color:var(--accent);
-    border-color:var(--accent);
+
+    border-color:
+        var(--accent);
 }
 
-/* FOOTER */
+
+/* =====================================================
+   FOOTER
+===================================================== */
 
 footer{
+
     text-align:center;
+
     padding:35px;
-    border-top:1px solid var(--line);
+
+    border-top:
+        1px solid var(--line);
+
     color:#526078;
+
     font-size:12px;
 }
 
 footer span{
+
     color:var(--accent);
 }
 
-/* RESPONSIVE */
 
-@media(max-width:900px){
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:1000px){
+
+    .skills{
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .projects{
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .achievements{
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+}
+
+
+@media(max-width:800px){
 
     nav ul{
+
         display:none;
     }
 
     .about-grid{
-        grid-template-columns:1fr;
-    }
 
-    .skills{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:1fr;
     }
 
     .projects{
+
         grid-template-columns:1fr;
     }
+
+    .achievements{
+
+        grid-template-columns:1fr;
+    }
+
 }
+
 
 @media(max-width:500px){
 
     section{
-        padding:75px 6%;
+
+        padding:
+            75px 6%;
     }
 
     .hero{
-        padding:100px 6% 50px;
+
+        padding:
+            100px 6% 50px;
     }
 
     .skills{
+
         grid-template-columns:1fr;
     }
 
     .hero h1{
+
         font-size:48px;
     }
+
+    .section-title{
+
+        font-size:32px;
+    }
+
+    .terminal-body{
+
+        font-size:11px;
+    }
 }
+
 </style>
+
 </head>
+
 
 <body>
 
+
+<!-- =====================================================
+     MATRIX BACKGROUND
+===================================================== -->
+
 <canvas id="matrix"></canvas>
 
-<!-- NAVIGATION -->
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
 
 <nav>
 
 <div class="logo">
+
 SAI<span>.NADH</span>
+
 </div>
 
+
 <ul>
-<li><a href="#home">HOME</a></li>
-<li><a href="#about">ABOUT</a></li>
-<li><a href="#skills">SKILLS</a></li>
-<li><a href="#projects">PROJECTS</a></li>
-<li><a href="#contact">CONTACT</a></li>
+
+<li>
+<a href="#home">HOME</a>
+</li>
+
+<li>
+<a href="#about">ABOUT</a>
+</li>
+
+<li>
+<a href="#skills">SKILLS</a>
+</li>
+
+<li>
+<a href="#projects">PROJECTS</a>
+</li>
+
+<li>
+<a href="#journey">JOURNEY</a>
+</li>
+
+<li>
+<a href="#contact">CONTACT</a>
+</li>
+
 </ul>
 
 </nav>
 
 
-<!-- HERO -->
+<!-- =====================================================
+     HERO
+===================================================== -->
 
-<section class="hero" id="home">
+<section
+    class="hero"
+    id="home"
+>
 
 <div class="hero-content">
 
+
 <div class="status">
+
 <div class="status-dot"></div>
+
 SYSTEM ONLINE • AVAILABLE FOR OPPORTUNITIES
+
 </div>
+
 
 <h1>
+
 Hello,<br>
+
 I'm <span>Sainadh</span>
+
 </h1>
 
+
 <div class="typing">
-&gt; <span id="typing"></span><span class="cursor">_</span>
+
+&gt;
+
+<span id="typing"></span>
+
+<span class="cursor">_</span>
+
 </div>
 
+
 <p>
-Cyber Security student focused on understanding how systems
-work, how they fail, and how they can be secured.
-I build projects that combine technology, security and creativity.
+
+Cyber Security student focused on understanding
+how systems work, how they fail and how they
+can be secured.
+
+I build practical projects combining
+cybersecurity, programming, web technologies
+and creative problem solving.
+
 </p>
+
 
 <div class="buttons">
 
-<a href="#projects" class="btn">
+<a
+    href="#projects"
+    class="btn"
+>
 VIEW PROJECTS →
 </a>
 
-<a href="#contact" class="btn secondary">
+
+<a
+    href="#contact"
+    class="btn secondary"
+>
 CONTACT ME
 </a>
 
 </div>
 
+
 </div>
 
 </section>
 
 
-<!-- ABOUT -->
+<!-- =====================================================
+     ABOUT
+===================================================== -->
 
 <section id="about">
 
-<div class="section-label">// ABOUT_ME</div>
+<div class="section-label">
+
+// ABOUT_ME
+
+</div>
+
 
 <div class="section-title">
+
 Inside the System
+
 </div>
+
 
 <div class="about-grid">
 
+
 <div class="terminal">
 
+
 <div class="terminal-top">
+
 <i></i>
 <i></i>
 <i></i>
+
 </div>
+
 
 <div class="terminal-body">
 
-<span class="green">sainadh@portfolio</span>:~$ whoami
+<span class="green">
+sainadh@portfolio
+</span>:~$ whoami
 
 <br><br>
+
 
 Name:
-<span class="blue">Danduprolu Sainadh</span>
+
+<span class="blue">
+Danduprolu Sainadh
+</span>
 
 <br>
+
 
 Role:
-<span class="blue">Cyber Security Student</span>
+
+<span class="blue">
+Cyber Security Student
+</span>
 
 <br>
+
 
 Education:
-<span class="blue">B.Tech — 4th Year</span>
+
+<span class="blue">
+B.Tech — 4th Year
+</span>
 
 <br>
+
 
 Focus:
-<span class="blue">Cyber Security</span>
+
+<span class="blue">
+Cyber Security
+</span>
 
 <br>
+
+
+Interests:
+
+<span class="blue">
+Ethical Hacking • Python • Web
+</span>
+
+<br>
+
 
 Mindset:
-<span class="green">Learn → Build → Secure</span>
+
+<span class="green">
+Learn → Build → Secure
+</span>
 
 <br>
 
+
+Projects:
+
+<span class="green">
+06+
+</span>
+
+<br>
+
+
 Status:
-<span class="green">OPEN TO OPPORTUNITIES</span>
+
+<span class="green">
+OPEN TO OPPORTUNITIES
+</span>
 
 <br><br>
 
-<span class="green">sainadh@portfolio</span>:~$ _
+
+<span class="green">
+sainadh@portfolio
+</span>:~$ _
+
 </div>
 
 </div>
+
 
 <div class="about-text">
 
-<p>
-I'm a fourth-year Cyber Security student who enjoys
-exploring technology beyond the surface level.
-</p>
 
 <p>
-My interest lies in cybersecurity, ethical hacking,
-web technologies and building practical projects.
+
+I'm a fourth-year Cyber Security student
+who enjoys exploring technology beyond
+the surface level.
+
 </p>
 
-<p>
-Rather than simply learning tools, I like understanding
-why vulnerabilities happen and how systems can be
-designed more securely.
-</p>
 
 <p>
-My goal is to grow into a cybersecurity professional
-who can solve real-world security problems.
+
+My interests include cybersecurity,
+ethical hacking fundamentals, Linux,
+Python, web development and building
+practical applications.
+
 </p>
+
+
+<p>
+
+I enjoy turning ideas into working
+projects while continuously improving
+my understanding of secure systems.
+
+</p>
+
+
+<p>
+
+My goal is to become a cybersecurity
+professional capable of solving
+real-world security problems.
+
+</p>
+
 
 </div>
+
 
 </div>
 
 </section>
 
 
-<!-- SKILLS -->
+<!-- =====================================================
+     SKILLS
+===================================================== -->
 
 <section id="skills">
 
-<div class="section-label">// SKILL_MATRIX</div>
+<div class="section-label">
+
+// SKILL_MATRIX
+
+</div>
+
 
 <div class="section-title">
+
 My Arsenal
+
 </div>
+
 
 <div class="skills">
 
-<div class="skill">
-<div class="skill-icon">⌁</div>
-<h3>Cyber Security</h3>
-<p>Security concepts, vulnerability analysis and ethical hacking fundamentals.</p>
-</div>
 
 <div class="skill">
-<div class="skill-icon">⌘</div>
-<h3>Python</h3>
-<p>Automation, scripting and security-oriented development.</p>
+
+<div class="skill-icon">
+🛡️
 </div>
 
-<div class="skill">
-<div class="skill-icon">◈</div>
-<h3>Web Development</h3>
-<p>HTML, CSS, JavaScript and backend development fundamentals.</p>
+<h3>
+Cyber Security
+</h3>
+
+<p>
+Security concepts, vulnerability analysis,
+ethical hacking fundamentals and security
+awareness.
+</p>
+
 </div>
 
-<div class="skill">
-<div class="skill-icon">▣</div>
-<h3>Linux</h3>
-<p>Linux environment, terminal usage and security tools.</p>
-</div>
 
 <div class="skill">
-<div class="skill-icon">⬡</div>
-<h3>SQL</h3>
-<p>Database fundamentals, queries and data management.</p>
+
+<div class="skill-icon">
+🐍
 </div>
 
-<div class="skill">
-<div class="skill-icon">⚡</div>
-<h3>Git & GitHub</h3>
-<p>Version control, repositories and project deployment.</p>
+<h3>
+Python
+</h3>
+
+<p>
+Programming, automation, scripting and
+security-oriented development.
+</p>
+
 </div>
 
-<div class="skill">
-<div class="skill-icon">◉</div>
-<h3>Django</h3>
-<p>Python-based web application development.</p>
-</div>
 
 <div class="skill">
-<div class="skill-icon">△</div>
-<h3>Problem Solving</h3>
-<p>Breaking complex problems into practical solutions.</p>
+
+<div class="skill-icon">
+🌐
 </div>
+
+<h3>
+Web Development
+</h3>
+
+<p>
+HTML, CSS, JavaScript and backend
+development fundamentals.
+</p>
+
+</div>
+
+
+<div class="skill">
+
+<div class="skill-icon">
+🐧
+</div>
+
+<h3>
+Linux
+</h3>
+
+<p>
+Linux environments, terminal usage,
+system administration and security tools.
+</p>
+
+</div>
+
+
+<div class="skill">
+
+<div class="skill-icon">
+🗄️
+</div>
+
+<h3>
+SQL
+</h3>
+
+<p>
+Database fundamentals, queries and
+data management.
+</p>
+
+</div>
+
+
+<div class="skill">
+
+<div class="skill-icon">
+🔧
+</div>
+
+<h3>
+Git & GitHub
+</h3>
+
+<p>
+Version control, repositories, branches,
+commits and collaboration.
+</p>
+
+</div>
+
+
+<div class="skill">
+
+<div class="skill-icon">
+⚙️
+</div>
+
+<h3>
+Django / Flask
+</h3>
+
+<p>
+Python-based web application development
+and backend fundamentals.
+</p>
+
+</div>
+
+
+<div class="skill">
+
+<div class="skill-icon">
+🧠
+</div>
+
+<h3>
+Problem Solving
+</h3>
+
+<p>
+Breaking complex problems into practical
+and efficient solutions.
+</p>
+
+</div>
+
 
 </div>
 
 </section>
 
 
-<!-- PROJECTS -->
+<!-- =====================================================
+     PROJECTS
+===================================================== -->
 
 <section id="projects">
 
-<div class="section-label">// PROJECT_DATABASE</div>
+<div class="section-label">
+
+// PROJECT_DATABASE
+
+</div>
+
 
 <div class="section-title">
+
 Things I've Built
+
 </div>
+
 
 <div class="projects">
 
+
+<!-- PROJECT 01 -->
+
 <div class="project">
 
-<div class="project-number">PROJECT_01</div>
+<div class="project-number">
 
-<h3>AI Resume Analyzer</h3>
+PROJECT_01
+
+</div>
+
+
+<h3>
+
+AI Resume Analyzer
+
+</h3>
+
 
 <p>
-An AI-powered system that analyzes resumes,
-extracts important information and provides
-feedback to improve the resume.
+
+A smart resume analysis web application
+that allows users to upload PDF resumes
+and analyzes skills, contact information,
+important sections and improvement areas.
+
 </p>
 
+
 <div class="tags">
-<span class="tag">PYTHON</span>
-<span class="tag">AI</span>
-<span class="tag">NLP</span>
-</div>
+
+<span class="tag">
+PYTHON
+</span>
+
+<span class="tag">
+FLASK
+</span>
+
+<span class="tag">
+HTML
+</span>
+
+<span class="tag">
+CSS
+</span>
+
+<span class="tag">
+JAVASCRIPT
+</span>
+
+<span class="tag">
+PyPDF2
+</span>
 
 </div>
 
+
+<div class="project-link">
+
+<a
+    href="https://github.com/sainadh1245/devops_exp"
+    target="_blank"
+    class="btn"
+>
+VIEW CODE →
+</a>
+
+</div>
+
+</div>
+
+
+<!-- PROJECT 02 -->
 
 <div class="project">
 
-<div class="project-number">PROJECT_02</div>
+<div class="project-number">
 
-<h3>Feedback Management System</h3>
+PROJECT_02
+
+</div>
+
+
+<h3>
+
+CineScript Studio
+
+</h3>
+
 
 <p>
-A web application for collecting and managing
-user feedback with authentication and database
-integration.
+
+A cinematic movie screenplay development
+platform for creating scenes, managing
+characters, organizing story outlines and
+writing movie scripts.
+
 </p>
 
+
 <div class="tags">
-<span class="tag">DJANGO</span>
-<span class="tag">PYTHON</span>
-<span class="tag">SQLITE</span>
-</div>
+
+<span class="tag">
+HTML
+</span>
+
+<span class="tag">
+CSS
+</span>
+
+<span class="tag">
+JAVASCRIPT
+</span>
+
+<span class="tag">
+UI/UX
+</span>
+
+<span class="tag">
+LOCALSTORAGE
+</span>
 
 </div>
 
+
+<div class="project-link">
+
+<a
+    href="#"
+    class="btn"
+    onclick="showMessage('CineScript Studio project page can be connected here.')"
+>
+VIEW PROJECT →
+</a>
+
+</div>
+
+</div>
+
+
+<!-- PROJECT 03 -->
 
 <div class="project">
 
-<div class="project-number">PROJECT_03</div>
+<div class="project-number">
 
-<h3>Security Lab</h3>
+PROJECT_03
+
+</div>
+
+
+<h3>
+
+Feedback Management System
+
+</h3>
+
 
 <p>
+
+A web-based feedback management application
+designed for collecting, organizing and
+managing user feedback with backend and
+database integration.
+
+</p>
+
+
+<div class="tags">
+
+<span class="tag">
+DJANGO
+</span>
+
+<span class="tag">
+PYTHON
+</span>
+
+<span class="tag">
+SQLITE
+</span>
+
+<span class="tag">
+HTML
+</span>
+
+<span class="tag">
+CSS
+</span>
+
+</div>
+
+
+<div class="project-link">
+
+<a
+    href="#"
+    class="btn"
+    onclick="showMessage('Add your Feedback Management System GitHub link here.')"
+>
+VIEW PROJECT →
+</a>
+
+</div>
+
+</div>
+
+
+<!-- PROJECT 04 -->
+
+<div class="project">
+
+<div class="project-number">
+
+PROJECT_04
+
+</div>
+
+
+<h3>
+
+Cyber Security Lab
+
+</h3>
+
+
+<p>
+
 A personal cybersecurity learning environment
-for experimenting with Linux, networking and
-security concepts.
+for practicing Linux, networking, security
+concepts and hands-on cybersecurity techniques.
+
 </p>
 
+
 <div class="tags">
-<span class="tag">LINUX</span>
-<span class="tag">NETWORKING</span>
-<span class="tag">SECURITY</span>
+
+<span class="tag">
+KALI LINUX
+</span>
+
+<span class="tag">
+LINUX
+</span>
+
+<span class="tag">
+NETWORKING
+</span>
+
+<span class="tag">
+SECURITY
+</span>
+
+</div>
+
+
+<div class="project-link">
+
+<a
+    href="#"
+    class="btn"
+    onclick="showMessage('Add your Cyber Security Lab GitHub link here.')"
+>
+VIEW PROJECT →
+</a>
+
 </div>
 
 </div>
 
+
+<!-- PROJECT 05 -->
+
+<div class="project">
+
+<div class="project-number">
+
+PROJECT_05
+
 </div>
 
 
-<!-- SECURITY SCANNER -->
+<h3>
+
+Cyber Security Portfolio
+
+</h3>
+
+
+<p>
+
+A personal cybersecurity portfolio featuring
+terminal-inspired design, Matrix animation,
+typing effects, project showcase and an
+interactive security scan simulation.
+
+</p>
+
+
+<div class="tags">
+
+<span class="tag">
+HTML
+</span>
+
+<span class="tag">
+CSS
+</span>
+
+<span class="tag">
+JAVASCRIPT
+</span>
+
+<span class="tag">
+MATRIX
+</span>
+
+</div>
+
+
+<div class="project-link">
+
+<a
+    href="https://github.com/sainadh1245"
+    target="_blank"
+    class="btn"
+>
+GITHUB →
+</a>
+
+</div>
+
+</div>
+
+
+<!-- PROJECT 06 -->
+
+<div class="project">
+
+<div class="project-number">
+
+PROJECT_06
+
+</div>
+
+
+<h3>
+
+GitHub DevOps Project
+
+</h3>
+
+
+<p>
+
+A hands-on development project maintained
+using Git and GitHub with repository management,
+version control, commits, branches and remote
+workflow.
+
+</p>
+
+
+<div class="tags">
+
+<span class="tag">
+GIT
+</span>
+
+<span class="tag">
+GITHUB
+</span>
+
+<span class="tag">
+LINUX
+</span>
+
+<span class="tag">
+DEVOPS
+</span>
+
+</div>
+
+
+<div class="project-link">
+
+<a
+    href="https://github.com/sainadh1245/devops_exp"
+    target="_blank"
+    class="btn"
+>
+VIEW REPOSITORY →
+</a>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =====================================================
+     SECURITY SCANNER
+===================================================== -->
 
 <div class="scanner">
 
+
 <div class="scan-header">
 
-<span>PORTFOLIO_SECURITY_SCAN</span>
+<span>
+PORTFOLIO_SECURITY_SCAN
+</span>
 
-<span id="scanStatus">READY</span>
+
+<span id="scanStatus">
+READY
+</span>
 
 </div>
+
 
 <div class="progress">
 
-<div class="progress-bar" id="progress"></div>
+<div
+    class="progress-bar"
+    id="progress"
+>
+</div>
 
 </div>
 
-<div class="scan-result" id="result">
-> Waiting for security scan...
+
+<div
+    class="scan-result"
+    id="result"
+>
+
+&gt; Waiting for security scan...
+
 </div>
 
-<button class="scan-btn" onclick="runScan()">
+
+<button
+    class="scan-btn"
+    onclick="runScan()"
+>
+
 RUN SECURITY SCAN
+
 </button>
+
 
 </div>
 
 </section>
 
 
-<!-- EXPERIENCE -->
+<!-- =====================================================
+     JOURNEY
+===================================================== -->
 
-<section>
+<section id="journey">
 
-<div class="section-label">// JOURNEY_LOG</div>
+<div class="section-label">
+
+// JOURNEY_LOG
+
+</div>
+
 
 <div class="section-title">
+
 My Journey
+
 </div>
+
 
 <div class="timeline">
 
+
 <div class="timeline-item">
 
-<div class="timeline-date">2022 → PRESENT</div>
+<div class="timeline-date">
 
-<h3>B.Tech — Cyber Security</h3>
+2022 → PRESENT
+
+</div>
+
+
+<h3>
+
+B.Tech — Cyber Security
+
+</h3>
+
 
 <p>
+
 Developing foundations in cybersecurity,
-programming, networking, operating systems
-and web technologies.
+programming, networking, operating systems,
+databases and web technologies.
+
 </p>
 
 </div>
@@ -910,14 +2080,26 @@ and web technologies.
 
 <div class="timeline-item">
 
-<div class="timeline-date">PROJECT PHASE</div>
+<div class="timeline-date">
 
-<h3>Building Practical Projects</h3>
+PROJECT PHASE
+
+</div>
+
+
+<h3>
+
+Building Practical Projects
+
+</h3>
+
 
 <p>
+
 Started turning theoretical knowledge into
-working applications and security-focused
-projects.
+working applications including resume analysis,
+web applications and creative development projects.
+
 </p>
 
 </div>
@@ -925,234 +2107,636 @@ projects.
 
 <div class="timeline-item">
 
-<div class="timeline-date">CURRENT MISSION</div>
+<div class="timeline-date">
 
-<h3>Become a Cyber Security Professional</h3>
+LINUX & GITHUB
+
+</div>
+
+
+<h3>
+
+Learning Development Workflow
+
+</h3>
+
 
 <p>
-Continuously learning, experimenting and
-building projects that solve real problems.
+
+Working with Kali Linux, terminal commands,
+Git, GitHub repositories, branches, commits
+and project deployment.
+
 </p>
 
 </div>
+
+
+<div class="timeline-item">
+
+<div class="timeline-date">
+
+CURRENT MISSION
+
+</div>
+
+
+<h3>
+
+Become a Cyber Security Professional
+
+</h3>
+
+
+<p>
+
+Continuously learning, experimenting and
+building projects that solve practical
+real-world problems.
+
+</p>
+
+</div>
+
 
 </div>
 
 </section>
 
 
-<!-- CONTACT -->
+<!-- =====================================================
+     ACHIEVEMENTS / CURRENT WORK
+===================================================== -->
+
+<section>
+
+<div class="section-label">
+
+// CURRENT_WORK
+
+</div>
+
+
+<div class="section-title">
+
+What I'm Working On
+
+</div>
+
+
+<div class="achievements">
+
+
+<div class="achievement">
+
+<div class="achievement-icon">
+🧠
+</div>
+
+<h3>
+Cybersecurity
+</h3>
+
+<p>
+Strengthening cybersecurity fundamentals,
+Linux skills, networking knowledge and
+security concepts.
+</p>
+
+</div>
+
+
+<div class="achievement">
+
+<div class="achievement-icon">
+💻
+</div>
+
+<h3>
+Project Development
+</h3>
+
+<p>
+Building practical applications and
+improving development skills through
+real projects.
+</p>
+
+</div>
+
+
+<div class="achievement">
+
+<div class="achievement-icon">
+🚀
+</div>
+
+<h3>
+Career Growth
+</h3>
+
+<p>
+Preparing for internships and future
+opportunities in cybersecurity and
+technology.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
 
 <section id="contact">
 
 <div class="contact">
 
-<div class="section-label">// ESTABLISH_CONNECTION</div>
 
-<div class="section-title">
-Let's Connect
+<div class="section-label">
+
+// ESTABLISH_CONNECTION
+
 </div>
 
+
+<div class="section-title">
+
+Let's Connect
+
+</div>
+
+
 <p>
+
 Have a project, internship opportunity or
 interesting cybersecurity problem?
-Let's build something meaningful.
+
+Let's connect and build something meaningful.
+
 </p>
+
 
 <div class="contact-links">
 
-<a href="mailto:yourmail@gmail.com">
-EMAIL
+
+<a
+    href="mailto:yourmail@gmail.com"
+>
+📧 EMAIL
 </a>
 
-<a href="https://github.com/sainadh1245" target="_blank">
-GITHUB
+
+<a
+    href="https://github.com/sainadh1245"
+    target="_blank"
+>
+💻 GITHUB
 </a>
 
-<a href="#">
-LINKEDIN
+
+<a
+    href="#"
+    onclick="showMessage('Add your LinkedIn profile URL here.')"
+>
+🔗 LINKEDIN
 </a>
+
 
 </div>
+
 
 </div>
 
 </section>
 
 
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
 <footer>
 
-© 2026 <span>Sainadh</span> • Built with curiosity & code
+© 2026
+
+<span>
+Sainadh
+</span>
+
+•
+
+Built with curiosity & code
 
 </footer>
 
 
 <script>
 
-/* TYPING EFFECT */
+/* =====================================================
+   TYPING EFFECT
+===================================================== */
 
 const words = [
-"Cyber Security Student",
-"Ethical Hacking Enthusiast",
-"Python Developer",
-"Problem Solver",
-"Future Security Professional"
+
+    "Cyber Security Student",
+
+    "Ethical Hacking Enthusiast",
+
+    "Python Developer",
+
+    "Linux Learner",
+
+    "Web Developer",
+
+    "Problem Solver",
+
+    "Future Security Professional"
+
 ];
 
+
 let wordIndex = 0;
+
 let charIndex = 0;
+
 let deleting = false;
 
-const typing = document.getElementById("typing");
+
+const typing =
+    document.getElementById("typing");
+
 
 function type(){
 
-    const word = words[wordIndex];
+    const word =
+        words[wordIndex];
+
 
     if(!deleting){
 
-        typing.textContent = word.substring(0,charIndex+1);
+        typing.textContent =
+            word.substring(
+                0,
+                charIndex + 1
+            );
+
         charIndex++;
 
-        if(charIndex === word.length){
+
+        if(
+            charIndex ===
+            word.length
+        ){
 
             deleting = true;
 
-            setTimeout(type,1500);
+            setTimeout(
+                type,
+                1500
+            );
+
             return;
         }
 
-    }else{
+    }
 
-        typing.textContent = word.substring(0,charIndex-1);
+    else{
+
+        typing.textContent =
+            word.substring(
+                0,
+                charIndex - 1
+            );
+
         charIndex--;
+
 
         if(charIndex === 0){
 
             deleting = false;
+
             wordIndex++;
 
-            if(wordIndex >= words.length){
+
+            if(
+                wordIndex >=
+                words.length
+            ){
+
                 wordIndex = 0;
+
             }
+
         }
+
     }
 
-    setTimeout(type,deleting ? 45 : 80);
+
+    setTimeout(
+
+        type,
+
+        deleting
+            ? 45
+            : 80
+
+    );
+
 }
+
 
 type();
 
 
-/* SECURITY SCAN */
+/* =====================================================
+   SECURITY SCAN
+===================================================== */
 
 function runScan(){
 
-    const bar = document.getElementById("progress");
-    const result = document.getElementById("result");
-    const status = document.getElementById("scanStatus");
+    const bar =
+        document.getElementById(
+            "progress"
+        );
 
-    bar.style.width = "0%";
+    const result =
+        document.getElementById(
+            "result"
+        );
 
-    status.textContent = "SCANNING...";
+    const status =
+        document.getElementById(
+            "scanStatus"
+        );
 
-    result.textContent = "> Initializing security scan...";
 
-    setTimeout(()=>{
-        bar.style.width="25%";
-        result.textContent="> Checking exposed vulnerabilities...";
-    },500);
+    bar.style.width =
+        "0%";
 
-    setTimeout(()=>{
-        bar.style.width="50%";
-        result.textContent="> Checking portfolio integrity...";
-    },1000);
 
-    setTimeout(()=>{
-        bar.style.width="75%";
-        result.textContent="> Checking security configuration...";
-    },1500);
+    status.textContent =
+        "SCANNING...";
 
-    setTimeout(()=>{
-        bar.style.width="100%";
-        status.textContent="SECURE";
 
-        result.innerHTML =
-        "> Scan complete: <span style='color:#00ff9d'>NO CRITICAL ISSUES FOUND ✓</span>";
+    result.textContent =
+        "> Initializing security scan...";
 
-    },2200);
+
+    setTimeout(
+
+        function(){
+
+            bar.style.width =
+                "25%";
+
+            result.textContent =
+                "> Checking exposed vulnerabilities...";
+
+        },
+
+        500
+
+    );
+
+
+    setTimeout(
+
+        function(){
+
+            bar.style.width =
+                "50%";
+
+            result.textContent =
+                "> Checking portfolio integrity...";
+
+        },
+
+        1000
+
+    );
+
+
+    setTimeout(
+
+        function(){
+
+            bar.style.width =
+                "75%";
+
+            result.textContent =
+                "> Checking security configuration...";
+
+        },
+
+        1500
+
+    );
+
+
+    setTimeout(
+
+        function(){
+
+            bar.style.width =
+                "100%";
+
+            status.textContent =
+                "SECURE";
+
+
+            result.innerHTML =
+
+                "> Scan complete: " +
+
+                "<span style='color:#00ff9d'>" +
+
+                "NO CRITICAL ISSUES FOUND ✓" +
+
+                "</span>";
+
+        },
+
+        2200
+
+    );
+
 }
 
 
-/* MATRIX EFFECT */
+/* =====================================================
+   MATRIX EFFECT
+===================================================== */
 
-const canvas = document.getElementById("matrix");
-const ctx = canvas.getContext("2d");
+const canvas =
+    document.getElementById(
+        "matrix"
+    );
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
 
-const letters =
-"01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&<>[]{}";
+const ctx =
+    canvas.getContext("2d");
 
-const fontSize = 14;
 
-let columns = Math.floor(canvas.width/fontSize);
+const characters =
+    "01ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&<>[]{}";
 
-let drops = [];
 
-for(let i=0;i<columns;i++){
-    drops[i] = Math.random()*canvas.height/fontSize;
+const fontSize =
+    14;
+
+
+let columns;
+
+let drops;
+
+
+function resizeMatrix(){
+
+    canvas.width =
+        window.innerWidth;
+
+    canvas.height =
+        window.innerHeight;
+
+
+    columns =
+        Math.floor(
+            canvas.width /
+            fontSize
+        );
+
+
+    drops = [];
+
+
+    for(
+        let i = 0;
+        i < columns;
+        i++
+    ){
+
+        drops[i] =
+            Math.random() *
+            canvas.height /
+            fontSize;
+
+    }
+
 }
+
+
+resizeMatrix();
+
 
 function matrix(){
 
-    ctx.fillStyle="rgba(5,7,13,0.08)";
-    ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle =
+        "rgba(5,7,13,0.08)";
 
-    ctx.fillStyle="#00ff9d";
-    ctx.font=fontSize+"px monospace";
 
-    for(let i=0;i<drops.length;i++){
+    ctx.fillRect(
+
+        0,
+        0,
+        canvas.width,
+        canvas.height
+
+    );
+
+
+    ctx.fillStyle =
+        "#00ff9d";
+
+
+    ctx.font =
+        fontSize +
+        "px monospace";
+
+
+    for(
+        let i = 0;
+        i < drops.length;
+        i++
+    ){
 
         const text =
-        letters[Math.floor(Math.random()*letters.length)];
+            characters[
+                Math.floor(
+                    Math.random() *
+                    characters.length
+                )
+            ];
+
 
         ctx.fillText(
+
             text,
-            i*fontSize,
-            drops[i]*fontSize
+
+            i * fontSize,
+
+            drops[i] *
+            fontSize
+
         );
 
+
         if(
-            drops[i]*fontSize > canvas.height &&
-            Math.random() > .975
+
+            drops[i] *
+            fontSize >
+            canvas.height
+
+            &&
+            Math.random() >
+            .975
+
         ){
-            drops[i]=0;
+
+            drops[i] = 0;
+
         }
 
+
         drops[i]++;
+
     }
+
 }
 
-setInterval(matrix,35);
 
-window.addEventListener("resize",()=>{
+setInterval(
+    matrix,
+    35
+);
 
-    canvas.width=window.innerWidth;
-    canvas.height=window.innerHeight;
 
-    columns=Math.floor(canvas.width/fontSize);
+window.addEventListener(
 
-    drops=[];
+    "resize",
 
-    for(let i=0;i<columns;i++){
-        drops[i]=Math.random()*canvas.height/fontSize;
-    }
+    resizeMatrix
 
-});
+);
+
+
+/* =====================================================
+   MESSAGE
+===================================================== */
+
+function showMessage(message){
+
+    alert(message);
+
+}
 
 </script>
 
+
 </body>
+
 </html>
