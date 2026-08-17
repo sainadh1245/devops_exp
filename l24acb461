@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CineScript Studio</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#08090d;
+    color:#f5f5f5;
+    min-height:100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    position:fixed;
+    left:0;
+    top:0;
+    width:250px;
+    height:100vh;
+
+    padding:25px 18px;
+
+    background:#0d0f15;
+    border-right:1px solid #252832;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:bold;
+    margin-bottom:40px;
+}
+
+.logo span{
+    color:#f5b942;
+}
+
+.menu-title{
+    color:#666;
+    font-size:11px;
+    letter-spacing:2px;
+    margin:25px 10px 10px;
+}
+
+.menu button{
+    width:100%;
+    border:0;
+    background:transparent;
+    color:#aaa;
+    padding:13px;
+    margin-bottom:5px;
+    border-radius:8px;
+
+    text-align:left;
+    cursor:pointer;
+}
+
+.menu button:hover,
+.menu button.active{
+    background:#1c1f28;
+    color:#fff;
+}
+
+.menu button.active{
+    border-left:3px solid #f5b942;
+}
+
+/* MAIN */
+
+.main{
+    margin-left:250px;
+    min-height:100vh;
+}
+
+/* TOP BAR */
+
+.topbar{
+    height:75px;
+    padding:0 35px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    border-bottom:1px solid #252832;
+    background:#0b0c11;
+}
+
+.project-title{
+    font-size:20px;
+    font-weight:bold;
+}
+
+.project-title small{
+    display:block;
+    font-size:11px;
+    color:#777;
+    margin-top:4px;
+}
+
+.actions{
+    display:flex;
+    gap:10px;
+}
+
+.btn{
+    border:1px solid #343743;
+    background:#151821;
+    color:#ddd;
+
+    padding:10px 17px;
+    border-radius:7px;
+
+    cursor:pointer;
+}
+
+.btn:hover{
+    border-color:#f5b942;
+    color:white;
+}
+
+.btn.primary{
+    background:#f5b942;
+    color:#111;
+    border-color:#f5b942;
+    font-weight:bold;
+}
+
+/* CONTENT */
+
+.content{
+    padding:35px;
+    max-width:1400px;
+}
+
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
+}
+
+/* DASHBOARD */
+
+.hero{
+    padding:35px;
+
+    border:1px solid #292d38;
+    border-radius:15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(245,185,66,.08),
+            rgba(255,255,255,.02)
+        );
+
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-size:40px;
+    margin-bottom:12px;
+}
+
+.hero p{
+    color:#999;
+    max-width:650px;
+    line-height:1.7;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.card{
+    background:#101219;
+    border:1px solid #292d38;
+    border-radius:12px;
+    padding:25px;
+}
+
+.card h3{
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#888;
+    line-height:1.6;
+}
+
+.stat{
+    font-size:35px;
+    font-weight:bold;
+    color:#f5b942;
+    margin-bottom:8px;
+}
+
+/* SCRIPT EDITOR */
+
+.editor-layout{
+    display:grid;
+    grid-template-columns:240px 1fr;
+    gap:20px;
+}
+
+.scene-list{
+    background:#101219;
+    border:1px solid #292d38;
+    border-radius:12px;
+    padding:15px;
+}
+
+.scene-list h3{
+    padding:10px;
+    margin-bottom:10px;
+}
+
+.scene{
+    padding:13px;
+    border-radius:7px;
+    cursor:pointer;
+    margin-bottom:5px;
+    color:#aaa;
+}
+
+.scene:hover,
+.scene.active{
+    background:#1c1f28;
+    color:white;
+}
+
+.script-editor{
+    background:#101219;
+    border:1px solid #292d38;
+    border-radius:12px;
+    padding:30px;
+}
+
+.script-header{
+    border-bottom:1px solid #292d38;
+    padding-bottom:20px;
+    margin-bottom:25px;
+}
+
+.scene-heading{
+    color:#f5b942;
+    font-weight:bold;
+    letter-spacing:1px;
+}
+
+textarea{
+    width:100%;
+    min-height:500px;
+
+    resize:vertical;
+
+    background:#0b0c11;
+    color:#ddd;
+
+    border:1px solid #292d38;
+    border-radius:8px;
+
+    padding:25px;
+
+    font-size:16px;
+    line-height:1.8;
+
+    outline:none;
+}
+
+textarea:focus{
+    border-color:#f5b942;
+}
+
+/* CHARACTERS */
+
+.character-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.character{
+    background:#101219;
+    border:1px solid #292d38;
+    border-radius:12px;
+    padding:25px;
+}
+
+.avatar{
+    width:55px;
+    height:55px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#242832;
+    border-radius:50%;
+
+    font-size:22px;
+    margin-bottom:15px;
+}
+
+.character p{
+    color:#888;
+    line-height:1.6;
+}
+
+/* OUTLINE */
+
+.outline{
+    display:grid;
+    gap:15px;
+}
+
+.story-card{
+    padding:22px;
+
+    background:#101219;
+    border:1px solid #292d38;
+    border-radius:12px;
+}
+
+.story-card span{
+    color:#f5b942;
+    font-size:12px;
+    letter-spacing:2px;
+}
+
+.story-card h3{
+    margin:8px 0;
+}
+
+.story-card p{
+    color:#999;
+    line-height:1.6;
+}
+
+/* MODAL */
+
+.modal{
+    display:none;
+
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.75);
+
+    align-items:center;
+    justify-content:center;
+
+    z-index:10;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:500px;
+
+    background:#11131a;
+    border:1px solid #30343e;
+    border-radius:15px;
+
+    padding:30px;
+}
+
+.modal-box h2{
+    margin-bottom:20px;
+}
+
+.input{
+    width:100%;
+    padding:13px;
+
+    background:#090a0e;
+    color:white;
+
+    border:1px solid #30343e;
+    border-radius:7px;
+
+    margin-bottom:15px;
+
+    outline:none;
+}
+
+.input:focus{
+    border-color:#f5b942;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    .sidebar{
+        width:200px;
+    }
+
+    .main{
+        margin-left:200px;
+    }
+
+    .grid,
+    .character-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:650px){
+
+    .sidebar{
+        position:relative;
+        width:100%;
+        height:auto;
+    }
+
+    .main{
+        margin-left:0;
+    }
+
+    .editor-layout{
+        grid-template-columns:1fr;
+    }
+
+    .topbar{
+        padding:0 15px;
+    }
+
+    .content{
+        padding:15px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+        🎬 <span>Cine</span>Script
+    </div>
+
+    <div class="menu">
+
+        <div class="menu-title">
+            WORKSPACE
+        </div>
+
+        <button
+            class="active"
+            onclick="showPage('dashboard',this)"
+        >
+            🏠 Dashboard
+        </button>
+
+        <button
+            onclick="showPage('script',this)"
+        >
+            📝 Screenplay
+        </button>
+
+        <button
+            onclick="showPage('characters',this)"
+        >
+            👤 Characters
+        </button>
+
+        <button
+            onclick="showPage('outline',this)"
+        >
+            📖 Story Outline
+        </button>
+
+    </div>
+
+    <div class="menu">
+
+        <div class="menu-title">
+            PROJECT
+        </div>
+
+        <button onclick="newProject()">
+            ➕ New Project
+        </button>
+
+        <button onclick="printScript()">
+            🖨 Print Script
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- MAIN -->
+
+<main class="main">
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+        <div class="project-title">
+
+            The Last Horizon
+
+            <small>
+                Feature Film • Draft 01
+            </small>
+
+        </div>
+
+        <div class="actions">
+
+            <button
+                class="btn"
+                onclick="saveProject()"
+            >
+                💾 Save
+            </button>
+
+            <button
+                class="btn primary"
+                onclick="printScript()"
+            >
+                Export
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <div class="content">
+
+
+        <!-- DASHBOARD -->
+
+        <section
+            id="dashboard"
+            class="page active"
+        >
+
+            <div class="hero">
+
+                <h1>
+                    Bring Your Story
+                    <span style="color:#f5b942">
+                        To Life.
+                    </span>
+                </h1>
+
+                <p>
+                    A professional workspace for
+                    developing movie ideas, writing
+                    screenplays, building characters
+                    and organizing your story.
+                </p>
+
+            </div>
+
+
+            <div class="grid">
+
+                <div class="card">
+
+                    <div class="stat">
+                        24
+                    </div>
+
+                    <h3>
+                        Scenes
+                    </h3>
+
+                    <p>
+                        Scenes written in your screenplay.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="stat">
+                        8
+                    </div>
+
+                    <h3>
+                        Characters
+                    </h3>
+
+                    <p>
+                        Characters currently in your story.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="stat">
+                        12.4K
+                    </div>
+
+                    <h3>
+                        Words
+                    </h3>
+
+                    <p>
+                        Total screenplay word count.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SCREENPLAY -->
+
+        <section
+            id="script"
+            class="page"
+        >
+
+            <h2 style="margin-bottom:25px">
+                Screenplay
+            </h2>
+
+            <div class="editor-layout">
+
+
+                <div class="scene-list">
+
+                    <h3>
+                        Scenes
+                    </h3>
+
+                    <div
+                        class="scene active"
+                        onclick="loadScene(this,'SCENE 01 — INT. HOUSE — NIGHT')"
+                    >
+                        01. The Beginning
+                    </div>
+
+                    <div
+                        class="scene"
+                        onclick="loadScene(this,'SCENE 02 — EXT. CITY — NIGHT')"
+                    >
+                        02. The City
+                    </div>
+
+                    <div
+                        class="scene"
+                        onclick="loadScene(this,'SCENE 03 — INT. OFFICE — DAY')"
+                    >
+                        03. The Secret
+                    </div>
+
+                    <div
+                        class="scene"
+                        onclick="loadScene(this,'SCENE 04 — EXT. HIGHWAY — NIGHT')"
+                    >
+                        04. The Chase
+                    </div>
+
+                    <button
+                        class="btn"
+                        style="width:100%;margin-top:15px"
+                        onclick="addScene()"
+                    >
+                        + Add Scene
+                    </button>
+
+                </div>
+
+
+                <div class="script-editor">
+
+                    <div class="script-header">
+
+                        <div
+                            id="sceneHeading"
+                            class="scene-heading"
+                        >
+                            SCENE 01 — INT. HOUSE — NIGHT
+                        </div>
+
+                    </div>
+
+                    <textarea
+                        id="scriptText"
+                        placeholder="Start writing your screenplay..."
+                    >FADE IN:
+
+A quiet house sits beneath the moonlight.
+
+ARJUN, 28, enters the room slowly.
+
+He looks around.
+
+ARJUN
+Where is everyone?
+
+A strange sound comes from upstairs.
+
+Arjun looks toward the staircase.
+
+CUT TO:</textarea>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CHARACTERS -->
+
+        <section
+            id="characters"
+            class="page"
+        >
+
+            <h2 style="margin-bottom:25px">
+                Characters
+            </h2>
+
+            <div class="character-grid">
+
+
+                <div class="character">
+
+                    <div class="avatar">
+                        A
+                    </div>
+
+                    <h3>
+                        Arjun
+                    </h3>
+
+                    <p>
+                        28-year-old protagonist.
+                        Intelligent, brave and
+                        emotionally complex.
+                    </p>
+
+                </div>
+
+
+                <div class="character">
+
+                    <div class="avatar">
+                        M
+                    </div>
+
+                    <h3>
+                        Maya
+                    </h3>
+
+                    <p>
+                        A mysterious journalist
+                        who knows the truth behind
+                        the disappearance.
+                    </p>
+
+                </div>
+
+
+                <div class="character">
+
+                    <div class="avatar">
+                        V
+                    </div>
+
+                    <h3>
+                        Vikram
+                    </h3>
+
+                    <p>
+                        The antagonist. Powerful,
+                        intelligent and unpredictable.
+                    </p>
+
+                </div>
+
+
+                <div
+                    class="card"
+                    style="
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    min-height:180px;
+                    cursor:pointer;
+                    "
+                    onclick="openModal()"
+                >
+
+                    <h3>
+                        + Add Character
+                    </h3>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- OUTLINE -->
+
+        <section
+            id="outline"
+            class="page"
+        >
+
+            <h2 style="margin-bottom:25px">
+                Story Outline
+            </h2>
+
+
+            <div class="outline">
+
+
+                <div class="story-card">
+
+                    <span>
+                        ACT I
+                    </span>
+
+                    <h3>
+                        The Setup
+                    </h3>
+
+                    <p>
+                        Introduce the protagonist,
+                        world and central conflict.
+                    </p>
+
+                </div>
+
+
+                <div class="story-card">
+
+                    <span>
+                        ACT II
+                    </span>
+
+                    <h3>
+                        The Discovery
+                    </h3>
+
+                    <p>
+                        The protagonist discovers
+                        a hidden secret that changes
+                        everything.
+                    </p>
+
+                </div>
+
+
+                <div class="story-card">
+
+                    <span>
+                        ACT II
+                    </span>
+
+                    <h3>
+                        The Conflict
+                    </h3>
+
+                    <p>
+                        The antagonist begins hunting
+                        the protagonist.
+                    </p>
+
+                </div>
+
+
+                <div class="story-card">
+
+                    <span>
+                        ACT III
+                    </span>
+
+                    <h3>
+                        The Final Choice
+                    </h3>
+
+                    <p>
+                        The protagonist faces the
+                        final confrontation.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+    </div>
+
+</main>
+
+
+<!-- CHARACTER MODAL -->
+
+<div
+    id="modal"
+    class="modal"
+>
+
+    <div class="modal-box">
+
+        <h2>
+            Add Character
+        </h2>
+
+        <input
+            id="characterName"
+            class="input"
+            placeholder="Character name"
+        >
+
+        <input
+            id="characterRole"
+            class="input"
+            placeholder="Character role"
+        >
+
+        <textarea
+            id="characterDescription"
+            class="input"
+            style="min-height:120px"
+            placeholder="Character description"
+        ></textarea>
+
+        <div
+            style="
+            display:flex;
+            gap:10px;
+            "
+        >
+
+            <button
+                class="btn primary"
+                onclick="addCharacter()"
+            >
+                Add Character
+            </button>
+
+            <button
+                class="btn"
+                onclick="closeModal()"
+            >
+                Cancel
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* PAGE NAVIGATION */
+
+function showPage(pageId, button){
+
+    document.querySelectorAll(".page")
+        .forEach(function(page){
+
+            page.classList.remove("active");
+
+        });
+
+    document.getElementById(pageId)
+        .classList.add("active");
+
+
+    document.querySelectorAll(".menu button")
+        .forEach(function(btn){
+
+            btn.classList.remove("active");
+
+        });
+
+    button.classList.add("active");
+}
+
+
+/* LOAD SCENE */
+
+function loadScene(element, heading){
+
+    document.querySelectorAll(".scene")
+        .forEach(function(scene){
+
+            scene.classList.remove("active");
+
+        });
+
+    element.classList.add("active");
+
+    document.getElementById(
+        "sceneHeading"
+    ).textContent = heading;
+}
+
+
+/* ADD SCENE */
+
+function addScene(){
+
+    const list =
+        document.querySelector(".scene-list");
+
+    const count =
+        list.querySelectorAll(".scene").length + 1;
+
+    const scene =
+        document.createElement("div");
+
+    scene.className = "scene";
+
+    scene.textContent =
+        String(count).padStart(2,"0")
+        + ". New Scene";
+
+    scene.onclick = function(){
+
+        loadScene(
+            scene,
+            "SCENE "
+            + String(count).padStart(2,"0")
+            + " — INT. LOCATION — DAY"
+        );
+
+    };
+
+    list.insertBefore(
+        scene,
+        list.querySelector(".btn")
+    );
+
+    alert("New scene added!");
+}
+
+
+/* MODAL */
+
+function openModal(){
+
+    document.getElementById(
+        "modal"
+    ).classList.add("show");
+
+}
+
+function closeModal(){
+
+    document.getElementById(
+        "modal"
+    ).classList.remove("show");
+
+}
+
+
+/* ADD CHARACTER */
+
+function addCharacter(){
+
+    const name =
+        document.getElementById(
+            "characterName"
+        ).value.trim();
+
+    const role =
+        document.getElementById(
+            "characterRole"
+        ).value.trim();
+
+    const description =
+        document.getElementById(
+            "characterDescription"
+        ).value.trim();
+
+
+    if(!name){
+
+        alert("Please enter character name.");
+
+        return;
+    }
+
+
+    const grid =
+        document.querySelector(
+            ".character-grid"
+        );
+
+
+    const card =
+        document.createElement("div");
+
+    card.className = "character";
+
+
+    card.innerHTML = `
+
+        <div class="avatar">
+            ${name.charAt(0).toUpperCase()}
+        </div>
+
+        <h3>
+            ${name}
+        </h3>
+
+        <p>
+            ${role || "Character"}
+            <br><br>
+            ${description || "No description added."}
+        </p>
+
+    `;
+
+
+    grid.insertBefore(
+        card,
+        grid.lastElementChild
+    );
+
+
+    document.getElementById(
+        "characterName"
+    ).value = "";
+
+    document.getElementById(
+        "characterRole"
+    ).value = "";
+
+    document.getElementById(
+        "characterDescription"
+    ).value = "";
+
+
+    closeModal();
+
+}
+
+
+/* SAVE */
+
+function saveProject(){
+
+    const script =
+        document.getElementById(
+            "scriptText"
+        ).value;
+
+
+    localStorage.setItem(
+        "cineScript",
+        script
+    );
+
+
+    alert(
+        "Project saved successfully!"
+    );
+}
+
+
+/* LOAD */
+
+window.addEventListener(
+    "load",
+    function(){
+
+        const saved =
+            localStorage.getItem(
+                "cineScript"
+            );
+
+
+        if(saved){
+
+            document.getElementById(
+                "scriptText"
+            ).value = saved;
+
+        }
+
+    }
+);
+
+
+/* PRINT */
+
+function printScript(){
+
+    window.print();
+
+}
+
+
+/* NEW PROJECT */
+
+function newProject(){
+
+    if(
+        confirm(
+            "Create a new screenplay?"
+        )
+    ){
+
+        document.getElementById(
+            "scriptText"
+        ).value = "";
+
+        alert(
+            "New screenplay created."
+        );
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
